@@ -1,0 +1,12 @@
+Para instalar o Tree-sitter-cli
+
+temos que instalar via cargo.
+
+mas antes disso temos que instalar o RUST
+curl --proto '=https' -tlsv1.2 -sSf https://sh.rustup.rs | sh
+source ~/.cargo/env
+
+
+para instalar o tree-sitter-cli via cargo:
+cargo install --locked tree-sitter-cli
+
