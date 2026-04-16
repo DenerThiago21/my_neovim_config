@@ -54,12 +54,12 @@ config_nvim() {
 }
 
 echo "--------------My NeoVIM configuration-----------------"
-install_rust()
-install_treesitter()
-install_node()
-install_neovim()
+install_rust
+install_treesitter
+install_node
+install_neovim
 nvim
-config_nvim()
+config_nvim
 
 echo "-----------------Finish installation------------------"
 
