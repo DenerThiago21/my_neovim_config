@@ -36,6 +36,8 @@ install_neovim() {
 
 	mkdir -p /opt/nvim
 	mv nvim-linux-x86_64.appimage /opt/nvim/nvim
+	
+	sudo ln -sf /opt/nvim/nvim.appimage /usr/local/bin/nvim
 
 	export PATH="$PATH:/opt/nvim/"
 
@@ -58,8 +60,13 @@ install_rust
 install_treesitter
 install_node
 install_neovim
+
+sudo chmod +x /usr/local/bin/nvim
 nvim
+
 config_nvim
+
+nvim
 
 echo "-----------------Finish installation------------------"
 
