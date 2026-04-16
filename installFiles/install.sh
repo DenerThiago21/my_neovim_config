@@ -37,9 +37,10 @@ install_neovim() {
 	mkdir -p /opt/nvim
 	mv nvim-linux-x86_64.appimage /opt/nvim/nvim
 	
-	sudo ln -sf /opt/nvim/nvim.appimage /usr/local/bin/nvim
+#	sudo ln -sf /opt/nvim/nvim /usr/local/bin/nvim
 
 	export PATH="$PATH:/opt/nvim/"
+	source ~/.bashrc
 
 	git clone https://github.com/nvim-lua/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 }
@@ -60,9 +61,6 @@ install_rust
 install_treesitter
 install_node
 install_neovim
-
-sudo chmod +x /usr/local/bin/nvim
-nvim
 
 config_nvim
 
