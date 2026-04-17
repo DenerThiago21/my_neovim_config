@@ -1,7 +1,7 @@
 #!/bin/bash
 
 fonts_dir="${HOME}/.local/share/fonts"
-url="https://github.com/ryanoasis/ner-fonts/releases/donwload"
+url="https://github.com/ryanoasis/nerd-fonts/releases/download"
 version="v3.2.1"
 
 install_font() {
