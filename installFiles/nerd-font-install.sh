@@ -19,10 +19,10 @@ install_font() {
 unzip_install() {
 	local pacote="unzip"
 
-	if ! dpkg -l "$pacote" 2>/dev/null | grep -q "^ii"; then
+	if ! dpkg -l "${pacote}" 2>/dev/null | grep -q "^ii"; then
 		echo "installing unzip ..."
-		sudo apt install "$pacote"
-	if
+		sudo apt install "${pacote}"
+	fi
 }
 
 
