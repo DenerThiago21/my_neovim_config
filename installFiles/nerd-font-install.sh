@@ -7,13 +7,15 @@ version="v3.2.1"
 install_font() {
 	echo = "Typing the font name ..."
 	read font
-	wget "${url}/${version}/${font}.zip"
+	wget -O "$fonts_dir" "${url}/${version}/${font}.zip"
 
 	unzip_install
-		
-	unzip -o "${font}.zip" -d "$fonts_dir"
-	rm "${font}.zip"
 
+	cd "${fonts_dir}"
+		
+	unzip "${font}.zip"
+
+	rm "${font}.zip"
 }
 
 unzip_install() {
