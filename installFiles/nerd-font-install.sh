@@ -28,7 +28,7 @@ unzip_install() {
 
 if ! test -d fonts_dir; then
 	mkdir -p "$fonts_dir"
-else
+fi
 	
 install_font
 
