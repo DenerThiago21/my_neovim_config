@@ -67,12 +67,18 @@ config_nvim() {
 	rm -rf "${XDG_CONFIG_HOME:-$HOME/Downloads}"/nvim
 }
 
+# Instalando o ripgrep
+install_ripgrep() {
+	sudo apt install ripgrep	
+}
+
 echo "--------------My NeoVIM configuration-----------------"
 install_rust
 install_treesitter
 install_node
 install_neovim
 config_nvim
+install_ripgrep
 nvim
 
 echo "-----------------Finish installation------------------"
