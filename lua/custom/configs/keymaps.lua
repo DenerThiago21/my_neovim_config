@@ -1,4 +1,3 @@
-
 --_______________________________BASIC / GENERAL KEYMAP____________________________________________
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -38,11 +37,9 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
 
-
-
 --_________________________TELESCOPE KEYMAP__________________________________________________
 -- See `:help telescope.builtin`
-local builtin = require( 'telescope.builtin')
+local builtin = require 'telescope.builtin'
 vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
 vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
@@ -55,12 +52,11 @@ vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Fi
 vim.keymap.set('n', '<leader>sc', builtin.commands, { desc = '[S]earch [C]ommands' })
 vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
-
 -- This runs on LSP attach per buffer (see main LSP attach function in 'neovim/nvim-lspconfig' config for more info,
 -- it is better explained there). This allows easily switching between pickers if you prefer using something else!
 vim.api.nvim_create_autocmd('LspAttach', {
-group = vim.api.nvim_create_augroup('telescope-lsp-attach', { clear = true }),
-callback = function(event)
+  group = vim.api.nvim_create_augroup('telescope-lsp-attach', { clear = true }),
+  callback = function(event)
     local buf = event.buf
 
     -- Find references for the word under your cursor.
@@ -87,39 +83,40 @@ callback = function(event)
     -- Useful when you're not sure what type a variable is and you want to see
     -- the definition of its *type*, not where it was *defined*.
     vim.keymap.set('n', 'grt', builtin.lsp_type_definitions, { buffer = buf, desc = '[G]oto [T]ype Definition' })
-end,
+  end,
 })
 
 -- Override default behavior and theme when searching
 vim.keymap.set('n', '<leader>/', function()
--- You can pass additional configuration to Telescope to change the theme, layout, etc.
-builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+  -- You can pass additional configuration to Telescope to change the theme, layout, etc.
+  builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
     winblend = 10,
     previewer = false,
-})
+  })
 end, { desc = '[/] Fuzzily search in current buffer' })
 
 -- It's also possible to pass additional configuration options.
 --  See `:help telescope.builtin.live_grep()` for information about particular keys
 vim.keymap.set(
-'n',
-'<leader>s/',
-function()
+  'n',
+  '<leader>s/',
+  function()
     builtin.live_grep {
-    grep_open_files = true,
-    prompt_title = 'Live Grep in Open Files',
+      grep_open_files = true,
+      prompt_title = 'Live Grep in Open Files',
     }
-end,
-{ desc = '[S]earch [/] in Open Files' }
+  end,
+  { desc = '[S]earch [/] in Open Files' }
 )
 
 -- Shortcut for searching your Neovim configuration files
-vim.keymap.set(
-'n', 
-'<leader>sn', 
-function() 
-    builtin.find_files { 
-        cwd = vim.fn.stdpath "config" 
-    } 
-end, 
-{ desc = '[S]earch [N]eovim files' })
+vim.keymap.set('n', '<leader>sn', function()
+  builtin.find_files {
+    cwd = vim.fn.stdpath 'config',
+  }
+end, { desc = '[S]earch [N]eovim files' })
+
+-- Neo-tree
+vim.keymap.set('n', '<leader>e', ':Neotree reveal<CR>', { desc = 'Neo-tree reveal' })
+-- if floating window
+-- vim.keymap.set('n', '<leader>e', ':Neotree reveal float<CR>', { desc = 'Neo-tree float' })
