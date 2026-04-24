@@ -43,7 +43,7 @@ install_neovim() {
 #	source ~/.bashrc
 	
 	./nvim-linux-x86_64.appimage --appimage-extract
-	./squash-root/AppRun --version
+	./squashfs-root/AppRun --version
 
 	sudo mv squashfs-root /
 	sudo ln -s /squash-root/AppRun /usr/bin/nvim
