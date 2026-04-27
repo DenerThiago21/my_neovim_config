@@ -14,6 +14,8 @@ install_rust() {
 install_treesitter() {
 	# instalação do treesitter via cargo.
 	echo "Installing Tree-sitter-cli ..."
+	# Talvez tenha que instalar o clang
+	sudo apt install llvm-dev libclang-dev clang
 	cargo install --locked tree-sitter-cli
 }
 
