@@ -1,13 +1,19 @@
 #!/bin/bash
 
+# Interrompe o script se qualquer comando falhar
+set -e
+
 # Pre instalações
 # ---------------------------------------
 # Instalando o RUST
 install_rust() {
 	# Primeiro temos que instalar o Rust, que é uma dependencia para a instalação do treesitter
 	echo "Installing Rust ..."
-	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-	source ~/.cargo/env
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+	#source $HOME/.cargo/env
+
+	# CORREÇÃO: Define o PATH diretamente no script para o restante da execução reconhecer o cargo
+	export PATH="$HOME/.cargo/bin:$PATH"
 }
 
 # Instalando o TREESITTER
@@ -48,7 +54,7 @@ install_neovim() {
 	./squashfs-root/AppRun --version
 
 	sudo mv squashfs-root /
-	sudo ln -s /squash-root/AppRun /usr/bin/nvim
+	sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
 
 	nvim
 	
